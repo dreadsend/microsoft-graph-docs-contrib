@@ -214,7 +214,25 @@ Content-type: application/json
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [PowerShell](#tab/powershell)
-[!INCLUDE [sample-code](../includes/snippets/powershell/v1/applications-howto-append-certificate-powershell-snippets.md)]
+```powershell
+
+Import-Module Microsoft.Graph.Applications
+$cer = Get-PfxCertificate -Filepath "C:\Users\admin\Desktop\20230112.cer"
+$params = @{
+	keyCredentials = @(
+		@{
+			endDateTime = $cer.GetExpirationDateString()
+			startDateTime = $cer.GetEffectiveDateString()
+			type = "AsymmetricX509Cert"
+			usage = "Verify"
+			key = [System.Text.Encoding]::ASCII.GetBytes([convert]::ToBase64String($cer.GetRawCertData()))
+			displayName = "CN=20230112"
+		}
+	)
+}
+
+Update-MgApplication -ApplicationId $applicationId -BodyParameter $params
+```
 [!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
 
 # [Python](#tab/python)
