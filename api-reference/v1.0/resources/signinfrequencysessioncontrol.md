@@ -19,7 +19,7 @@ Session control to enforce sign-in frequency. Inherits from [conditionalAccessSe
 | Property     | Type        | Description |
 |:-------------|:------------|:------------|
 |authenticationType |signInFrequencyAuthenticationType  | The possible values are `primaryAndSecondaryAuthentication`, `secondaryAuthentication`, `unknownFutureValue`. This property isn't required when using **frequencyInterval** with the value of `timeBased`.|
-|frequencyInterval  |signInFrequencyInterval  | The possible values are `timeBased`, `everyTime`, `unknownFutureValue`. Sign-in frequency of `everyTime` is available for risky users, risky sign-ins, and Intune device enrollment. For more information, see [Require reauthentication every time](https://aka.ms/RequireReauthentication).|
+|frequencyInterval  |signInFrequencyInterval  | The possible values are `timeBased`, `everyTime`, `unknownFutureValue`. Sign-in frequency of `everyTime` is generally available for risky users, risky sign-ins, and Intune device enrollment. For more information, see [Require reauthentication every time](https://aka.ms/RequireReauthentication). Use of `everytime` for other Applications is [in public Preview](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-session-lifetime#require-reauthentication-every-time).|
 |isEnabled     |Boolean      | Specifies whether the session control is enabled. |
 |type          |signinFrequencyType| Possible values are: `days`, `hours`.|
 |value         |Int32        | The number of `days` or `hours`.|
